@@ -29,7 +29,7 @@ class AnswersController < ApplicationController
     end
     
     def set_question
-      @question = Question.find(params[:question_id])
+      @question = Question.friendly.find(params[:question_id])
     end 
 end
 

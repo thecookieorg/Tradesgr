@@ -3,37 +3,38 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h4><%= @question.title %> <small><%= link_to '[back]', questions_path %></small></h4>
+      <h4><%= @question.title %> <small><%= link_to '[back]', questions_path %> 
+      <% if @question.user.id == current_user.id %>
+        <%= link_to '[edit]', edit_question_path(@question) %> 
+      <% end %></small></h4>
       <hr>
       <p><%= @question.description %></p>
       <hr>
       <% if @question.answers %>
       <% @question.answers.each do |answer| %>
-        <div class="comment">
-          <div class="user-name">
-            <%= answer.user.user_name %>
-          </div>
-          <div class="comment-content">
-            <%= answer.content %>
-          </div>
+        <div class="col-md-12">
+          <h3><%= answer.user.user_name %></h3>
+          <p><%= answer.content %></p>
+          <small>
+            <% if answer.user == current_user %>
+              <%= link_to question_answer_path(@question, answer), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <span>[delete this comment]</span>
+              <% end %>
+            <% end %>
+          </small>
+          
         </div>
-        <% if answer.user == current_user %>
-          <%= link_to question_answer_path(@question, answer), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <span>[delete comment]</span>
-          <% end %>
-        <% end %>
       <% end %>
     <% end %>
-    <div class="comment-form">
+    <div class="col-md-6" style="margin-top: 40px;">
       <%= form_for [@question, @question.answers.new] do |f| %>
-        <%= f.text_field :content, placeholder: 'Can you answer this question?' %>
+        <div class="form-group">
+          <%= f.text_field :content, placeholder: 'Can you answer this question?', class: "form-control", style: "height: 70px;" %>
+        </div>
+        <br>
+        <%= f.submit :submit, class: "btn btn-primary" %>
       <% end %>
     </div>
-    <hr>
-      <% if @question.user.id == current_user.id %>
-        <%= link_to '[edit]', edit_question_path(@question) %> 
-      <% end %>
-      <hr>
     </div>
   </div>
 </div>
