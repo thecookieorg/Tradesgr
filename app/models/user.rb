@@ -3,4 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  validates_uniqueness_of :user_name, presence: true, length: { minimum: 4, maximum: 16 }
+  
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
 end

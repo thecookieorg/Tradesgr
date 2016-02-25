@@ -1,0 +1,41 @@
+<%= render 'pages/static_nav' %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="font-size: 45px; color: #20356b; text-align: center;">Tradesgram</h1>
+            <br>
+            <h3 style="text-align: center;">Broadening professional connections and opportunities for trades and industries</h3>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 70px;">
+        <div class="col-md-6">
+            <%= image_tag 'col-p1.jpg' %>
+            <%= image_tag 'col-p2.jpg' %>
+            <%= image_tag 'col-p3.jpg' %>
+            <br>
+            <div style="margin-top:4px;">
+                <%= image_tag 'col-p4.jpg' %>
+                <%= image_tag 'col-p5.jpg' %>
+                <%= image_tag 'col-p6.jpg' %>
+            </div>
+            <div style="margin-top:4px;">
+                <%= image_tag 'col-p7.jpg' %>
+                <%= image_tag 'col-p8.jpg' %>
+                <%= image_tag 'col-p9.jpg' %>
+              </div>
+        </div>
+        <div class="col-md-6">
+            <h2 style="font-size: 30px; color: #010101; font-weight: 600; margin: 0px 0px 5px 0px;">Get started – it’s free.</h2>
+            <p style="color: #747474;">Registration takes less than 2 minutes.</p>
+            <br>
+            <div style="margin-top: 50px;">
+                <%= link_to 'JOIN NOW!', new_user_registration_path, class: "btn btn-primary btn-lg btn-block" %>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<%= render 'layouts/footer' %>
+
+

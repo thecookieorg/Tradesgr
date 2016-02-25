@@ -1,0 +1,25 @@
+<footer class="footer">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <%= image_tag 'logo.png', style: "width:40%;" %>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li><%= link_to 'About', pages_about_path %></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li><%= link_to "https://www.facebook.com/Tradesgram-472834876234190/" do %>
+                    <%= image_tag 'facebook.png', style: "width: 30px;" %>
+                <% end %></li>
+                    
+                <li><%= link_to "https://twitter.com/tradesgram" do %>
+                    <%= image_tag 'twitter.png', style: "width: 30px;" %>
+                <% end %></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</footer>

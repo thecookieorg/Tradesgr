@@ -1,29 +1,65 @@
-<h2>Sign up</h2>
+<nav class="navbar navbar-default" style="border-top: #20356b solid 3px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= image_tag 'logo.png', class: "navbar-brand", style: "height: 75px;" %>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag 'col-p1.jpg' %>
+      <%= image_tag 'col-p2.jpg' %>
+      <%= image_tag 'col-p3.jpg' %>
+      <br>
+      <div style="margin-top:4px;">
+        <%= image_tag 'col-p4.jpg' %>
+        <%= image_tag 'col-p5.jpg' %>
+        <%= image_tag 'col-p6.jpg' %>
+      </div>
+    </div>
+        <div class="col-md-6">
+            <h2 style="font-size: 30px; color: #010101; font-weight: 600; margin: 0px 0px 5px 0px;">New to Tradesgram?</h2>
+            <div class="col-md-8" style="margin-top: 10px;">
+                <div class="form-group">
+                  <%= f.label :user_name %><br />
+                  <%= f.text_field :user_name, autofocus: true, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                </div>
+               <div class="form-group">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+               </div>
+              
+                <div class="form-group">
+                  <%= f.submit "Register", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+              <%= render "users/shared/links" %>
+            </div>
+        </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<%= render 'layouts/footer' %>
