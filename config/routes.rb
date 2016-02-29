@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :certifications
+  get 'profiles/show'
+
   resources :questions
   get 'pages/index'
 
@@ -16,6 +19,11 @@ Rails.application.routes.draw do
   
   root 'pages#index'
   
+  # Existing route
+  get ':user_name', to: 'profiles#show', as: :profile  
+  # New route underneath
+  get ':user_name/edit', to: 'profiles#edit', as: :edit_profile
+  patch ':user_name/edit', to: 'profiles#update', as: :update_profile
   
   
   # The priority is based upon order of creation: first created -> highest priority.

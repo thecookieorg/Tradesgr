@@ -1,5 +1,10 @@
 
     <h3><%= q.title %></h3>
+    <small>
+      Posted by <%= link_to q.user.user_name, profile_path(q.user.user_name) %> <%= time_ago_in_words(q.created_at) %> ago
+    </small>
+    <br>
+    <br>
     <p><%= truncate(q.description, length: 370, escape: false) %> <%= link_to '(show)', q %></p>
     <hr>
     

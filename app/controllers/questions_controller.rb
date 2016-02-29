@@ -1,11 +1,13 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :owned_question, only: [:edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
+    @certifications = Certification.all
   end
 
   # GET /questions/1
@@ -74,4 +76,11 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :description, :slug)
     end
+    
+    def owned_question  
+      unless current_user == @question.user
+        flash[:alert] = "That question doesn't belong to you!"
+        redirect_to root_path
+      end
+    end  
 end

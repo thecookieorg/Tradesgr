@@ -1,0 +1,56 @@
+<%= render 'layouts/logged_in_top_nav' %>
+<div class="container">
+    <div class="row">
+      <div class="row profile-header">
+        <div class="col-md-3">
+          <div class="img-circle">
+              <%= profile_avatar_select(@user) %><br>
+               <p style="text-align: center;">
+                 <% if @user == current_user %>
+                    <%= link_to 'Change Picture', edit_profile_path(@user.user_name) %>
+                <% end %>
+               </p>
+            
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="user-name-and-follow">
+            <h3>
+              <%= @user.user_name %>
+            </h3>
+            <p><%= @user.email %></p>
+            <p><%= pluralize @user.questions.count, 'question' %></p>
+            <p><%= pluralize @user.answers.count, 'answer' %></p>
+            <span>
+               
+    
+            </span>
+          </div>
+        </div>
+        
+        <div class="col-md-3">
+          <h3>My certifications</h3>
+          <% @user.certifications.each do |c| %>
+            <p><%= c.certification_name %></p>
+            <p><%= c.certification_authority %></p>
+            <p><%= c.certification_number %></p>
+            <p><%= c.certification_url %></p>
+          <% end %>
+        </div>
+        
+      </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <% @user.questions.each do |q| %>
+            <h3><%= q.title %></h3>
+            <p><%= truncate(q.description, length: 370, escape: false) %> <%= link_to '(show)', q %></p>
+            <hr>
+        <% end %>
+    </div> 
+</div>
+</div>
+
+
+    

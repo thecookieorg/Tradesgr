@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225020601) do
+ActiveRecord::Schema.define(version: 20160225225223) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 20160225020601) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+
+  create_table "certifications", force: :cascade do |t|
+    t.string   "certification_name"
+    t.string   "certification_authority"
+    t.string   "certification_number"
+    t.string   "certification_url"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "user_id"
+  end
+
+  add_index "certifications", ["user_id"], name: "index_certifications_on_user_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -63,6 +75,10 @@ ActiveRecord::Schema.define(version: 20160225020601) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "user_name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

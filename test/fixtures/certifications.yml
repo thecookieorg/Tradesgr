@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  certification_name: MyString
+  certification_authority: MyString
+  certification_number: MyString
+  certification_url: MyString
+
+two:
+  certification_name: MyString
+  certification_authority: MyString
+  certification_number: MyString
+  certification_url: MyString

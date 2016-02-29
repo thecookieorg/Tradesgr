@@ -1,5 +1,21 @@
-<h1>New Question</h1>
+<%= render 'layouts/logged_in_top_nav' %>
+<div class="container">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">New Question</h3>
+          </div>
+          <div class="panel-body">
+            <%= render 'form' %>
+          </div>
+          <div class="panel-footer"><%= link_to 'Cancel', questions_path %></div>
+        </div>
+    </div>
+</div>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', questions_path %>
+
+
+
